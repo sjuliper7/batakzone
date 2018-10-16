@@ -11,11 +11,13 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    {{--<link href="{{ asset('css/app.css') }}" rel="stylesheet">--}}
+    <!--Bootstrap-template-->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">
+    <script type="text/javascript" src="{!! url('https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js') !!}"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.js"></script>
 
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!--Validator-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
 
     <!-- Scripts -->
     <script>
@@ -23,7 +25,7 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
-    <script src="https://use.fontawesome.com/9712be8772.js"></script>
+    {{--<script src="https://use.fontawesome.com/9712be8772.js"></script>--}}
 </head>
 <body>
 <div id="app">
