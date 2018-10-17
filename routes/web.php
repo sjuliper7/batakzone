@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Auth::routes();
 
@@ -28,3 +28,7 @@ Route::resource('permissions', 'PermissionController');
 Route::resource('posts', 'PostController');
 
 Route::resource('products','ProductController');
+
+Route::resource('status-products','StatusProductController');
+
+Route::get('/', 'LandingPageController@index')->name('landing-page');

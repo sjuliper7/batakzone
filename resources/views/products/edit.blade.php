@@ -10,8 +10,7 @@
             <h1>Create New Product</h1>
             <hr>
 
-            <form action="{{ url('products/'.$product->id) }}" method="post" data-toggle="validator" role="form" enctype="multipart/form-data">
-                <input type="hidden" name="_method" value="PUT">
+            <form action="/products.update" method="post" data-toggle="validator" role="form" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="form-group">
                     <label>Name</label>

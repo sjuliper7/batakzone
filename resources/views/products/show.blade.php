@@ -18,8 +18,13 @@
         {{--@can('Edit Post')--}}
             <a href="{{ route('products.edit', $product->id) }}" class="btn btn-info" role="button">Edit</a>
         {{--@endcan--}}
-{{--        @can('Delete Post')--}}
-            {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+        {{--@can('Delete Post')--}}
+        <form action="{{url('products/'.$product->id)}}" method="post">
+            {{csrf_field()}}
+            <input name="_method" type="hidden" value="DELETE">
+            <button class="btn btn-danger" onclick="return confirm('Are you sure?')" type="submit">Delete</button>
+        </form>
+        {{--onclick="return confirm('Are you sure?')"--}}
         {{--@endcan--}}
         {!! Form::close() !!}
 
