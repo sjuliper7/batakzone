@@ -4,13 +4,8 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductsTable extends Migration
+class CreateProductsTable1 extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
@@ -23,6 +18,9 @@ class CreateProductsTable extends Migration
             $table->integer('id_status')->unsigned();
             $table->integer('id_category')->unsigned();
             $table->timestamps();
+
+            $table->foreign('id_status')->references('id')->on('status_products');
+
         });
     }
 

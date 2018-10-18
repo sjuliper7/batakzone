@@ -11,6 +11,6 @@ class Product extends Model
     ];
 
     public function status(){
-        return $this->belongsTo('App\StatusProduct');
+        return $this->belongsTo(StatusProduct::class);
     }
 }

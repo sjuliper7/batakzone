@@ -1,27 +1,22 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
+        <a href="{{route('products.create')}}" class="btn btn-success" style="margin-bottom: 20px">Create Product</a>
         <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default">
-                    <div class="panel-heading"><h3>Products</h3></div>
-                    {{--<div class="panel-heading">Page {{ $posts->currentPage() }} of {{ $posts->lastPage() }}</div>--}}
-                    {{-- Loop thru posts --}}
-                    @foreach ($products as $product)
-                        <div class="panel-body">
-                            <li style="list-style-type:disc">
-                                <a href="{{ route('products.show', $product->id ) }}"><b>{{ $product->name}}</b><br>
-                                    {{--<p class="teaser">--}}
-                                        {{--{{  str_limit($post->body, 100) }} --}}{{-- Limit teaser to 100 characters --}}
-                                    {{--</p>--}}
-                                </a>
-                            </li>
+            <div class="col-md-auto">
+
+                @foreach($products as $product)
+                    <div class="col-sm-2">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="{{ asset('image/'.$product->image)  }}" style="max-width:150px;max-height:150px;margin-bottom: 10px" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">{{$product->name}}</h5>
+                                <p class="card-text">Rp.{{$product->price}}</p>
+                                <a href="{{ route('products.show', $product->id ) }}" class="btn btn-info">Detail</a>
+                            </div>
                         </div>
-                    @endforeach
-                </div>
-                {{--<div class="text-center">--}}
-                    {{--{!! $products->links() !!}--}}
-                {{--</div>--}}
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

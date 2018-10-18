@@ -32,3 +32,5 @@ Route::resource('products','ProductController');
 Route::resource('status-products','StatusProductController');
 
 Route::get('/', 'LandingPageController@index')->name('landing-page');
+
+Route::get('/detail-product/{id}','LandingPageController@detailProduct')->name('detail-product');

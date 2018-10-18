@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\StatusProduct;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::orderby('id', 'desc')->get();
+        $products = Product::with('status')->orderby('id', 'desc')->get();
         return view('products.index', compact('products'));
     }
 
@@ -25,7 +26,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('products.create');
+        $statusProducts = StatusProduct::all();
+        return view('products.create', compact('statusProducts'));
     }
 
     /**
@@ -36,7 +38,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->file('image'));
+//        dd($request);
         $product = new Product();
         $product->name = $request['name'];
         $product->price = $request['price'];
@@ -47,7 +49,7 @@ class ProductController extends Controller
         $fileName   = $file->getClientOriginalName();
         $request->file('image')->move('image/',$fileName);
 
-        $product->id_status = 0;
+        $product->id_status = $request['status-select'];
         $product->id_category = 0;
         $product->image = $fileName;
 
@@ -82,7 +84,8 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        return view ('products.edit', compact('product'));
+        $statusProducts  = StatusProduct::all();
+        return view ('products.edit', compact('product','statusProducts'));
     }
 
     /**
@@ -94,11 +97,20 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $product = Product::findOrFail($id);
         $product->name = $request['name'];
         $product->price = $request['price'];
         $product->stock = $request['stock'];
         $product->description = $request['description'];
+
+        $file       = $request->file('image');
+        $fileName   = $file->getClientOriginalName();
+        if($fileName != $product->image){
+//            dd('masuk');
+            $request->file('image')->move('image/',$fileName);
+            $product->image = $fileName;
+        }
 
         $product->save();
 

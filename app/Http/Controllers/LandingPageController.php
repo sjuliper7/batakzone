@@ -14,5 +14,9 @@ class LandingPageController extends Controller
         return view('landing-page')->with('products', $products);
     }
 
+    public function detailProduct($id){
+        dd($id);
+    }
+
 
 }
