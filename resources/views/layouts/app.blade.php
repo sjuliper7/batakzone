@@ -11,17 +11,13 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <!--Bootstrap-template-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    {{--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">--}}
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    {{--<script type="text/javascript" src="{!! url('https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js') !!}"></script>--}}
-    {{--<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.js"></script>--}}
+    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+    <!--Boostrap-template-->
+    {{--<link rel="stylesheet" href="{{asset('http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css')}}">--}}
+    <script src="{{asset('https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')}}"></script>
+    <script src="{{asset('http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.js')}}"></script>
 
-    <!--Validator-->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.5/validator.min.js"></script>
+    <link rel="stylesheet" href="{{asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')}}" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- Scripts -->
     <script>
@@ -32,6 +28,7 @@
     {{--<script src="https://use.fontawesome.com/9712be8772.js"></script>--}}
 </head>
 <body>
+
 <div id="app">
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
@@ -74,7 +71,7 @@
 
                             <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    @role('Admin') {{-- Laravel-permission blade helper --}}
+                                    @role('Admin')  Laravel-permission blade helper
                                     <a href="#"><i class="fa fa-btn fa-unlock"></i>Admin</a>
                                     @endrole
                                     <a href="{{ route('logout') }}"
@@ -102,11 +99,11 @@
         </div>
     @endif
 
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            @include ('errors.list') {{-- Including error file --}}
-        </div>
-    </div>
+    {{--<div class="row">--}}
+        {{--<div class="col-md-8 col-md-offset-2">--}}
+            {{--@include ('errors.list')  Including error file--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
     @yield('content')
 
@@ -114,5 +111,9 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 </html>
+
+{{--</body>--}}
+{{--</html>--}}
