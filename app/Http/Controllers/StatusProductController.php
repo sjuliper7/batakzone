@@ -15,6 +15,7 @@ class StatusProductController extends Controller
     public function index()
     {
         $statusProducts = StatusProduct::orderby('id', 'desc')->get();
+
         return view('status-products.index', compact('statusProducts'));
     }
 

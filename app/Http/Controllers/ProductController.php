@@ -15,7 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('status')->orderby('id', 'desc')->get();
+        $products = Product::orderby('id', 'desc')->get();
         return view('products.index', compact('products'));
     }
 
@@ -38,7 +38,6 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request);
         $product = new Product();
         $product->name = $request['name'];
         $product->price = $request['price'];
@@ -71,7 +70,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::with('status')->findOrFail($id);
         return view ('products.show', compact('product'));
     }
 
@@ -107,7 +106,6 @@ class ProductController extends Controller
         $file       = $request->file('image');
         $fileName   = $file->getClientOriginalName();
         if($fileName != $product->image){
-//            dd('masuk');
             $request->file('image')->move('image/',$fileName);
             $product->image = $fileName;
         }

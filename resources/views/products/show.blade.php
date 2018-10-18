@@ -9,9 +9,10 @@
             <div class="col-sm-6">
                 <h1>{{ $product->name}}</h1>
                 <hr>
-                <p class="lead">Rp {{ number_format($product->price,2) }} </p>
-                <p class="lead">{{ $product->stock }} pcs</p>
-                <p class="lead">{{ $product->description }} </p>
+                <p class="lead">Price : Rp {{ number_format($product->price,2) }} </p>
+                <p class="lead">Stock : {{ $product->stock }} pcs</p>
+                <p class="lead">Desc  : {{ $product->description }} </p>
+                <p class="lead">Status  : {{ $product->status->name}} </p>
                 {{--<p class="lead">{{ $product->status()->name }} </p>--}}
                 <hr>
                 {!! Form::open(['method' => 'DELETE', 'route' => ['products.destroy', $product->id] ]) !!}
